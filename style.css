@@ -1,0 +1,346 @@
+/* =========================
+   1. VARIABLES & BASE STYLES
+========================= */
+
+:root {
+  --accent-color: hsla(100, 1%, 40%, 0.863);
+  --venmo-color: #3d95ce;
+  --text-color: #fff;
+  --bg-color: #000;
+  
+  /* Sliding Switch Colors */
+  --switch-track-bg: #e2e8f0;      /* Track background */
+  --unselected-text: #64748b;      /* Light grey text */
+  --selected-pill-bg: #334155;     /* Dark grey active pill */
+  --selected-text: #ffffff;        /* Active pill text color */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text-color);
+  background: var(--bg-color);
+}
+
+/* Content wrapper */
+#contentWrapper {
+  min-height: 100vh;
+  background: url("./assets/Football\ Pick\'em\ Background\ \(2\).svg") center center / cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0 40px;
+}
+
+/* Titles & Headers */
+h1.title {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.centered {
+  text-align: center;
+}
+
+/* --- Form Elements --- */
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  width: 95%;
+}
+
+.header-logo {
+  max-width: 350px;
+  display: block;
+  margin: 20px auto;
+  border-radius: 4px;
+}
+
+.game,
+.byes {
+  border: 2px solid var(--accent-color);
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  transition: border 0.3s, box-shadow 0.3s;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: tra;
+}
+
+.game-header {
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.tiebreaker {
+  margin-top: 12px;
+}
+
+input[type="number"] {
+  width: 60px;
+}
+
+button {
+  padding: 8px 16px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+/* Error State Highlights Missing Picks */
+.error {
+  border: 2px solid #ef4444 !important;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.6);
+}
+
+/* =========================
+   2. SLIDING PILL SWITCH
+========================= */
+
+.slide-switch {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: var(--switch-track-bg);
+  border-radius: 25px;
+  padding: 4px;
+  user-select: none;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Animated Sliding Dark Grey Thumb */
+.switch-thumb {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  background-color: var(--selected-pill-bg);
+  border-radius: 21px;
+  opacity: 0; /* Hidden until selection is made */
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+}
+
+.switch-option {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 8px;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* Hide native radio buttons */
+.switch-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch-option span {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--unselected-text);
+  transition: color 0.2s ease;
+}
+
+/* Move thumb left when first option selected */
+.slide-switch:has(.switch-option:nth-child(2) input:checked) .switch-thumb {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Move thumb right when second option selected */
+.slide-switch:has(.switch-option:nth-child(3) input:checked) .switch-thumb {
+  opacity: 1;
+  transform: translateX(100%);
+}
+
+/* Highlight Active Selected Text */
+.switch-option input[type="radio"]:checked + span {
+  color: var(--selected-text);
+}
+
+/* Hover state on unselected options */
+.switch-option:hover span {
+  color: #1e293b;
+}
+
+/* =========================
+   3. MARQUEE
+========================= */
+
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background: transparent;
+  padding: 10px 0;
+}
+
+.marquee-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  white-space: nowrap;
+  animation: scroll 10s linear infinite;
+}
+
+.marquee-content img {
+  height: 60px;
+  width: auto;
+  transition: transform 0.3s;
+}
+
+.marquee-content img:hover {
+  transform: scale(1.15);
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* =========================
+   4. MODAL & VENMO
+========================= */
+
+#customAlert {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+#alertBox {
+  background: white;
+  color: black;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+#alertBox p {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+#alertBox a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--venmo-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+#alertBox button {
+  padding: 8px 16px;
+  background: #ccc;
+  border: none;
+  border-radius: 5px;
+}
+
+.venmo-container {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.venmo-btn {
+  padding: 10px 20px;
+  background-color: var(--venmo-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+/* =========================
+   5. RESPONSIVE STYLES
+========================= */
+
+@media (max-width: 480px) {
+  #contentWrapper {
+    padding: 10px 0 40px; 
+  }
+
+  form {
+    width: 95%;
+  }
+  
+  .game-header {
+    margin-bottom: 4px;
+    font-size: 13px;
+  }
+
+  .game,
+  .byes {
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+
+  .switch-option {
+    padding: 8px 4px;
+  }
+
+  .switch-option span {
+    font-size: 12px;
+  }
+  
+  .marquee-content img {
+    height: 30px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  #contentWrapper {
+    padding: 20px 0 40px; 
+  }
+
+  form {
+    width: 90%;
+  }
+
+  .switch-option span {
+    font-size: 13px;
+  }
+
+  .marquee-content img {
+    height: 40px;
+  }
+}
+
+@media (min-width: 768px) {
+  #contentWrapper {
+    padding: 30px 0 40px; 
+  }
+
+  form {
+    width: 80%;
+  }
+
+  .switch-option span {
+    font-size: 15px;
+  }
+}
