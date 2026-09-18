@@ -1,350 +1,42 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>NFL Week 2 Pick'em</title>
-
-  <!-- Link CSS -->
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- EmailJS -->
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <title>Site Maintenance — Pick'em</title>
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--text:#e6eef8;--muted:#9aa4b2;--accent:#10b981}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#071029 0%, #0f1724 100%);color:var(--text);padding:24px}
+    .card{max-width:820px;width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04);padding:28px;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,0.6)}
+    h1{font-size:clamp(20px,4vw,28px);margin-bottom:10px}
+    p{color:var(--muted);line-height:1.5;margin-bottom:12px}
+    .strong{color:var(--text);font-weight:600}
+    .note{margin-top:14px;color:var(--muted);font-size:14px}
+    .footer{margin-top:18px;display:flex;gap:10px;align-items:center}
+    .logo{font-weight:700;color:var(--accent);letter-spacing:0.4px}
+    @media (max-width:520px){.card{padding:20px}}
+  </style>
 </head>
-
 <body>
-  <div id="contentWrapper">
-    <header>
-      <img src="./assets//Arroz Con Pollo logo Transparent.svg" alt="Header Logo" class="header-logo">
-    </header>
+  <main class="card" role="main" aria-labelledby="title">
+    <h1 id="title">NFL Pick'Em is under maintenance</h1>
+    <p>We are updating the site for <span class="strong">next week's Pick'em lineup</span>. While we prepare the matchups and interface, the site will be temporarily unavailable.</p>
 
-    <h1 class="title">NFL Week 2 – 2026</h1>
+    <p><span class="strong">Downtime schedule:</span> The site will go down every <span class="strong">Thursday after 4:00 PM</span>.</p>
 
-    <form id="pickemForm">
-      <div class="centered">
-        <label>
-          Your Name & Email:
-          <input type="text" id="username" required>
-        </label>
-      </div>
-      <br>
+    <p><span class="strong">Return:</span> Don’t worry — we will be back up <span class="strong">Tuesday morning</span> so you can make your selections.</p>
 
-      <div class="marquee">
-        <span class="marquee-content">
-          <!-- First full set -->
-          <img src="https://static.www.nfl.com/t_q-best/league/api/clubs/logos/DAL" alt="Cowboys">
-          <img src="https://static.www.nfl.com/t_q-best/league/api/clubs/logos/GB" alt="Packers">
-          <img src="https://static.www.nfl.com/t_q-best/league/api/clubs/logos/HOU" alt="Texans">
-          <img src="https://static.www.nfl.com/t_q-best/league/api/clubs/logos/IND" alt="Colts">
-          <img src="https://static.www.nfl.com/t_q-best/league/api/clubs/logos/LAC" alt="Chargers">
-          <img src="https://static.www.nfl.com/t_q-best/league/api/clubs/logos/DEN" alt="Broncos">
-          <img src="https://static.www.nfl.com/t_q-best/league/api/clubs/logos/LA" alt="Rams">
-          <img src="https://static.www.nfl.com/t_q-best/league/api/clubs/logos/MIA" alt="Dolphins">
-          <img src="https://static.www.nfl.com/t_q-best/league/api/clubs/logos/MIN" alt="Vikings">
-          <img src="https://static.www.nfl.com/t_q-best/league/api/clubs/logos/NE" alt="Patriots">
-          <img src="https://static.www.nfl.com/t_q-best/league/api/clubs/logos/NO" alt="Saints">
-          <img src="https://static.www.nfl.com/t_q-best/league/api/clubs/logos/NYG" alt="Giants">
-          <img src="https://static.www.nfl.com/t_q-best/league/api/clubs/logos/NYJ" alt="Jets">
-          <img src="https://static.www.nfl.com/t_q-best/league/api/clubs/logos/PHI" alt="Eagles">
-          <img src="https://static.www.nfl.com/t_q-best/league/api/clubs/logos/PIT" alt="Steelers">
-          <img src="https://static.www.nfl.com/t_q-best/league/api/clubs/logos/SEA" alt="Seahawks">
-          <img src="https://static.www.nfl.com/t_q-best/league/api/clubs/logos/TB" alt="Buccaneers">
-          <img src="https://static.www.nfl.com/t_q-best/league/api/clubs/logos/TEN" alt="Titans">
-        </span>
-      </div>
+    <p class="note">If you need help while the site is offline, email <a href="mailto:support@example.com" style="color:inherit;text-decoration:underline">support@example.com</a>.</p>
 
-      <!-- ======== GAMES Week 2 ======== -->
-
-      <!-- Thursday Night Games -->
-      <div class="game">
-        <div class="game-header">Thur, Sept 17 – 6:15 PM MST (Thursday Night Football)</div>
-        <div class="slide-switch">
-          <div class="switch-thumb"></div>
-          <label class="switch-option">
-            <input type="radio" name="game0" value="Detroit Lions">
-            <span>Detroit Lions</span>
-          </label>
-          <label class="switch-option">
-            <input type="radio" name="game0" value="Buffalo Bills">
-            <span>Buffalo Bills</span>
-          </label>
-        </div>
-      </div>
-
-       <!-- Sunday Early Games -->
-      <div class="game">
-        <div class="game-header">Thur, Sept 20 – 11:00 AM MST</div>
-        <div class="slide-switch">
-          <div class="switch-thumb"></div>
-          <label class="switch-option">
-            <input type="radio" name="game1" value="Carolina Panthers">
-            <span>Carolina Panthers</span>
-          </label>
-          <label class="switch-option">
-            <input type="radio" name="game1" value="Atlanta Falcons">
-            <span>Atlanta Falcons</span>
-          </label>
-        </div>
-      </div>
-
-      <div class="game">
-        <div class="game-header">Sun, Sept 20 – 11:00 AM MST</div>
-        <div class="slide-switch">
-          <div class="switch-thumb"></div>
-          <label class="switch-option">
-            <input type="radio" name="game2" value="New Orleans Saints">
-            <span>New Orleans Saints</span>
-          </label>
-          <label class="switch-option">
-            <input type="radio" name="game2" value="Baltimore Ravens">
-            <span>Baltimore Ravens</span>
-          </label>
-        </div>
-      </div>
-
-      <div class="game">
-        <div class="game-header">Sun, Sept 20 – 11:00 AM MST</div>
-        <div class="slide-switch">
-          <div class="switch-thumb"></div>
-          <label class="switch-option">
-            <input type="radio" name="game3" value="Minnesota Vikings">
-            <span>Minnesota Vikings</span>
-          </label>
-          <label class="switch-option">
-            <input type="radio" name="game3" value="Chicago Bears">
-            <span>Chicago Bears</span>
-          </label>
-        </div>
-      </div>
-
-      <div class="game">
-        <div class="game-header">Sun, Sept 20 – 11:00 AM MST</div>
-        <div class="slide-switch">
-          <div class="switch-thumb"></div>
-          <label class="switch-option">
-            <input type="radio" name="game4" value="Cincinnati Bengals">
-            <span>Cincinnati Bengals</span>
-          </label>
-          <label class="switch-option">
-            <input type="radio" name="game4" value="Houston Texans">
-            <span>Houston Texans</span>
-          </label>
-        </div>
-      </div>
-
-      <div class="game">
-        <div class="game-header">Sun, Sept 20 – 11:00 AM MST</div>
-        <div class="slide-switch">
-          <div class="switch-thumb"></div>
-          <label class="switch-option">
-            <input type="radio" name="game5" value="Pittsburgh Steelers">
-            <span>Pittsburgh Steelers</span>
-          </label>
-          <label class="switch-option">
-            <input type="radio" name="game5" value="New England Patriots">
-            <span>New England Patriots</span>
-          </label>
-        </div>
-      </div>
-
-      <div class="game">
-        <div class="game-header">Sun, Sept 20 – 11:00 AM MST</div>
-        <div class="slide-switch">
-          <div class="switch-thumb"></div>
-          <label class="switch-option">
-            <input type="radio" name="game6" value="Green Bay Packers">
-            <span>Green Bay Packers</span>
-          </label>
-          <label class="switch-option">
-            <input type="radio" name="game6" value="New York Jets">
-            <span>New York Jets</span>
-          </label>
-        </div>
-      </div>
-
-      <div class="game">
-        <div class="game-header">Sun, Sept 20 – 11:00 AM MST</div>
-        <div class="slide-switch">
-          <div class="switch-thumb"></div>
-          <label class="switch-option">
-            <input type="radio" name="game7" value="Cleveland Browns">
-            <span>Cleveland Browns</span>
-          </label>
-          <label class="switch-option">
-            <input type="radio" name="game7" value="Tampa Bay Buccaneers">
-            <span>Tampa Bay Buccaneers</span>
-          </label>
-        </div>
-      </div>
-
-      <div class="game">
-        <div class="game-header">Sun, Sept 20 – 11:00 AM MST</div>
-        <div class="slide-switch">
-          <div class="switch-thumb"></div>
-          <label class="switch-option">
-            <input type="radio" name="game8" value="Philadelphia Eagles">
-            <span>Philadelphia Eagles</span>
-          </label>
-          <label class="switch-option">
-            <input type="radio" name="game8" value="Tennessee Titans">
-            <span>Tennessee Titans</span>
-          </label>
-        </div>
-      </div>
-
-      <!-- Sunday Late Afternoon Games -->
-      <div class="game">
-        <div class="game-header">Sun, Sept 20 – 2:05 PM MST</div>
-        <div class="slide-switch">
-          <div class="switch-thumb"></div>
-          <label class="switch-option">
-            <input type="radio" name="game9" value="Jacksonville Jaguars">
-            <span>Jacksonville Jaguars</span>
-          </label>
-          <label class="switch-option">
-            <input type="radio" name="game9" value="Denver Broncos">
-            <span>Denver Broncos</span>
-          </label>
-        </div>
-      </div>
-
-      <div class="game">
-        <div class="game-header">Sun, Sept 20 – 2:05 PM MST</div>
-        <div class="slide-switch">
-          <div class="switch-thumb"></div>
-          <label class="switch-option">
-            <input type="radio" name="game10" value="Las Vegas Raiders">
-            <span>Las Vegas Raiders</span>
-          </label>
-          <label class="switch-option">
-            <input type="radio" name="game10" value="Los Angeles Chargers">
-            <span>Los Angeles Chargers</span>
-          </label>
-        </div>
-      </div>
-
-      <div class="game">
-        <div class="game-header">Sun, Sept 20 – 2:25 PM MST</div>
-        <div class="slide-switch">
-          <div class="switch-thumb"></div>
-          <label class="switch-option">
-            <input type="radio" name="game11" value="Seattle Seahawks">
-            <span>Seattle Seahawks</span>
-          </label>
-          <label class="switch-option">
-            <input type="radio" name="game11" value="Arizona Cardinals">
-            <span>Arizona Cardinals</span>
-          </label>
-        </div>
-      </div>
-
-      <div class="game">
-        <div class="game-header">Sun, Sept 20 – 2:25 PM MST</div>
-        <div class="slide-switch">
-          <div class="switch-thumb"></div>
-          <label class="switch-option">
-            <input type="radio" name="game12" value="Washington Commanders">
-            <span>Washington Commanders</span>
-          </label>
-          <label class="switch-option">
-            <input type="radio" name="game12" value="Dallas Cowboys">
-            <span>Dallas Cowboys</span>
-          </label>
-        </div>
-      </div>
-
-      <div class="game">
-        <div class="game-header">Sun, Sept 20 – 2:25 PM MST</div>
-        <div class="slide-switch">
-          <div class="switch-thumb"></div>
-          <label class="switch-option">
-            <input type="radio" name="game13" value="Miami Dolphins">
-            <span>Miami Dolphins</span>
-          </label>
-          <label class="switch-option">
-            <input type="radio" name="game13" value="San Francisco 49ers">
-            <span>San Francisco 49ers</span>
-          </label>
-        </div>
-      </div>
-
-       <!-- Sunday Night Game -->
-      <div class="game">
-        <div class="game-header">Sun, Sept 20 – 6:20 PM MST (Sunday Night Football)</div>
-        <div class="slide-switch">
-          <div class="switch-thumb"></div>
-          <label class="switch-option">
-            <input type="radio" name="game14" value="Indianapolis Colts">
-            <span>Indianapolis Colts</span>
-          </label>
-          <label class="switch-option">
-            <input type="radio" name="game14" value="Kansas City Chiefs">
-            <span>Kansas City Chiefs</span>
-          </label>
-        </div>
-      </div>
-
-       <!-- Monday Night Game -->
-      <div class="game">
-        <div class="game-header">Mon, Sept 21 – 6:15 PM MST</div>
-        <div class="slide-switch">
-          <div class="switch-thumb"></div>
-          <label class="switch-option">
-            <input type="radio" name="game15" value="New York Giants">
-            <span>New York Giants</span>
-          </label>
-          <label class="switch-option">
-            <input type="radio" name="game15" value="Los Angeles Rams">
-            <span>Los Angeles Rams</span>
-          </label>
-        </div>
-
-        <div class="tiebreaker">
-          <label style="color: red;">
-            Tie-Breaker: Total Points Scored in Monday Night Football game. (0–200):
-            <br />
-            <br />
-            <input type="number" id="tiebreaker" min="0" max="200" required>
-          </label>
-        </div>
-      </div>
-      <!-- ======== END GAMES ======== -->
-
-      <!-- Teams on bye week -->
-      <div class="byes">
-        <p>Teams on Bye Week:</p>
-        <ul>
-          <li>None</li>
-        </ul>
-      </div>
-
-      <div class="centered">
-        <button type="submit">Submit Picks</button>
-      </div>
-    </form>
-
-    <br>
-
-    <div class="centered venmo-container">
-      <a href="venmo://paycharge?txn=pay&recipients=Arrozconpollo007&amount=5&note=Week 2 Pickem Fee" target="_blank"
-        class="venmo-btn">Venmo Alex</a>
+    <div class="footer">
+      <div class="logo">Good Luck!</div>
+      <div style="flex:1"></div>
+      <div class="note">— Pick'em Team</div>
     </div>
-  </div>
-
-  <!-- Custom Alert Modal -->
-  <div id="customAlert">
-    <div id="alertBox">
-      <p>Your picks have been recorded and sent to Alex. Please Venmo your fee. Good luck!</p>
-      <a id="venmoLink" href="venmo://paycharge?txn=pay&recipients=Arrozconpollo007&amount=5&note=Week 2 Pickem Fee"
-        target="_blank">Venmo Alex</a>
-      <br><br>
-      <button id="closeAlert">Close</button>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+  </main>
 </body>
-
 </html>
+
