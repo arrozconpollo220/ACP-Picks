@@ -26,7 +26,7 @@ body {
 /* Content wrapper */
 #contentWrapper {
   min-height: 100vh;
-  background: url("./assets/Football\ Pick\'em\ Background\ \(2\).svg") center center / cover no-repeat;
+  background: url("./assets/Halloween\ Background.jpeg") center center / cover no-repeat;
   display: flex;
   flex-direction: column;
   align-items: center;
